@@ -15,11 +15,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Controller implements Initializable{
     public static ObservableList<Contact> contacts = FXCollections.observableArrayList();
+    public static List<Contact> loadedContacts;
 
     @FXML
     ListView list;
@@ -35,6 +37,7 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         list.setItems(contacts);
     }
 
@@ -68,13 +71,4 @@ public class Controller implements Initializable{
         fw.close();
     }
 
-//    public void loadContacts() throws FileNotFoundException{
-//        File f = new File("contacts.json");
-//        Scanner s = new Scanner(f);
-//        s.useDelimiter("\\Z");
-//        String contents = s.next();
-//        s.close();
-//        JsonParser p = new JsonParser();
-//        contacts = p.parse(contents, ObservableList contacts);
-//    }
 }
